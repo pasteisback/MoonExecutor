@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>🌙 Moon Executor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="https://emoji.gg/assets/emoji/Moon_PNG.png">
+    <style>
+        /* Global Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #0d1b2a;
+            color: #fff;
+            overflow-x: hidden;
+        }
+        
+        h1, h2 {
+            color: #00bfff;
+        }
+
+        .container {
+            text-align: center;
+            padding: 50px;
+        }
+
+        .section {
+            padding: 50px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* Header */
+        header {
+            background: #0d1b2a;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 48px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        header h2 {
+            font-size: 24px;
+            font-weight: 300;
+            color: #a9b8c2;
+        }
+
+        /* Buttons */
+        .button {
+            background-color: #00bfff;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #1e90ff;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Section Styles */
+        .content {
+            background-color: #192734;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .content p {
+            font-size: 18px;
+            margin: 20px;
+        }
+
+        .content ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .content li {
+            padding: 8px;
+            font-size: 18px;
+        }
+
+        .discord-link {
+            color: #00bfff;
+            text-decoration: none;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1f2a37;
+            padding: 20px;
+            text-align: center;
+            font-size: 14px;
+            color: #a9b8c2;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🌙 Moon Executor</h1>
+        <h2>Free, Keyless, and Easy to Use</h2>
+    </header>
+
+    <div class="container">
+        <div class="section content">
+            <h2>Features</h2>
+            <ul>
+                <li>💫 Free, Keyless, and Easy to Use</li>
+                <li>💻 User-Friendly Interface: Packed with lots of features to enhance your experience</li>
+                <li>🔧 Powered by Forlorn API: Custom API with 100 UNC/SUNC coming soon!</li>
+                <li>📜 Script-Ready: Compatible with a wide variety of scripts for all your needs</li>
+                <li>🛡️ Safe & Reliable: Built with security and performance in mind</li>
+                <li>🤝 24/7 Support: Get help anytime from our dedicated team</li>
+                <li>🌐 Welcoming Community: Be part of a respectful and vibrant space for creators</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <a href="https://discord.gg/9gFABDVsP3" target="_blank" class="button">Join Our Discord</a>
+        </div>
+
+        <div class="section">
+            <a href="#" class="button">Download Moon Executor</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Moon Executor | All Rights Reserved</p>
+    </footer>
+
+    <script>
+        // Smooth Scroll for the page if needed
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -39,27 +39,32 @@
     }
 
     header {
-      background: rgba(10, 15, 30, 0.95);
-      padding: 20px 0;
-      text-align: center;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    }
+  backdrop-filter: blur(12px);
+  background: rgba(0, 0, 0, 0.4);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 20px 0;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease-in-out;
+}
 
-    header h1 {
-      font-size: 48px;
-      color: #00c3ff;
-      text-shadow: 0 0 15px rgba(0, 195, 255, 0.7);
-      animation: glow 2s infinite alternate;
-    }
+header h1 {
+  font-size: 42px;
+  margin: 0;
+  color: #ffffff;
+  text-shadow: 0 0 10px #00c3ff;
+  animation: glow 2s infinite alternate;
+}
 
-    header h2 {
-      font-size: 20px;
-      font-weight: 300;
-      color: #b0c5d1;
-    }
+header h2 {
+  font-size: 18px;
+  font-weight: 300;
+  color: #b0c5d1;
+  opacity: 0.8;
+}
 
     .container {
       text-align: center;
@@ -123,32 +128,32 @@
   </style>
 </head>
 <body>
-  <!-- Moon orbit background video -->
+  
   <video autoplay muted loop class="bg-video">
     <source src="https://cdn.pixabay.com/vimeo/403072215/moon-30976.mp4?width=640&hash=0f14dd3e4968e8307e32d73f35d152d71f1deec6" type="video/mp4" />
   </video>
 
-  <!-- Star canvas -->
+  
   <canvas id="stars"></canvas>
 
   <header>
-    <h1>🌙 Moon Executor and MoonAPI</h1>
+    <h1>🌙 Moon Softworks</h1>
     <h2>Free, Keyless, and Easy to Use</h2>
   </header>
 
   <div class="container">
     <div class="section">
       <a href="https://discord.gg/9gFABDVsP3" target="_blank" class="button">Join Our Discord</a>
-      <a href="https://www.roblox.com" target="_blank" class="button">Get Script</a>
+      <a href="about:blank" target="_blank" class="button">Get Script</a>
     </div>
   </div>
 
   <footer>
-    <p>&copy; 2025 Moon Executor | All Rights Reserved</p>
+    <p>&copy; 2025 Moon Softworks | All Rights Reserved</p>
   </footer>
 
   <script>
-    // Star animation
+    
     const canvas = document.getElementById("stars");
     const ctx = canvas.getContext("2d");
     let stars = [];
@@ -206,7 +211,7 @@
       createStars();
     });
 
-    // Scroll reveal
+    
     const sections = document.querySelectorAll(".section");
     const revealOnScroll = () => {
       const triggerBottom = window.innerHeight * 0.85;

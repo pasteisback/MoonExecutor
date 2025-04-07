@@ -1,147 +1,223 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>🌙 Moon Executor</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="icon" href="https://emoji.gg/assets/emoji/Moon_PNG.png">
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Roboto', sans-serif;
-            background: linear-gradient(135deg, #0a0f1e, #162c46);
-            color: #fff;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🌙 Moon Softworks</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"/>
+  <link rel="icon" href="https://emoji.gg/assets/emoji/Moon_PNG.png"/>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        h1, h2 {
-            color: #00c3ff;
-            text-shadow: 0 0 15px rgba(0, 195, 255, 0.7);
-        }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #0a0f1e;
+      color: #fff;
+      overflow-x: hidden;
+    }
 
-        .container {
-            text-align: center;
-            padding: 50px;
-            animation: fadeIn 1.5s ease-in-out;
-        }
+    video.bg-video {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      min-width: 100%;
+      min-height: 100%;
+      z-index: -2;
+      object-fit: cover;
+      opacity: 0.15;
+    }
 
-        .section {
-            padding: 50px;
-            margin: 20px auto;
-            max-width: 800px;
-            background: rgba(20, 30, 50, 0.95);
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-            animation: slideUp 1s ease-out;
-        }
+    canvas#stars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
 
-        header {
-            background: rgba(10, 15, 30, 0.9);
-            padding: 20px 0;
-            text-align: center;
-            position: sticky;
-            top: 0;
-            z-index: 10;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        }
+    header {
+      background: rgba(10, 15, 30, 0.95);
+      padding: 20px 0;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
 
-        header h1 {
-            font-size: 48px;
-            margin: 0;
-            animation: glow 2s infinite alternate;
-        }
+    header h1 {
+      font-size: 48px;
+      color: #00c3ff;
+      text-shadow: 0 0 15px rgba(0, 195, 255, 0.7);
+      animation: glow 2s infinite alternate;
+    }
 
-        header h2 {
-            font-size: 20px;
-            font-weight: 300;
-            color: #b0c5d1;
-        }
+    header h2 {
+      font-size: 20px;
+      font-weight: 300;
+      color: #b0c5d1;
+    }
 
-        .button {
-            background: linear-gradient(135deg, #00c3ff, #0073e6);
-            border: none;
-            color: white;
-            padding: 15px 32px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 18px;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            font-weight: bold;
-        }
+    .container {
+      text-align: center;
+      padding: 100px 20px;
+    }
 
-        .button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 5px 15px rgba(0, 195, 255, 0.8);
-        }
+    .section {
+      max-width: 700px;
+      margin: 60px auto;
+      padding: 40px 30px;
+      background: rgba(20, 30, 50, 0.95);
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 1s ease;
+    }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-        @keyframes slideUp {
-            from { transform: translateY(50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
+    .button {
+      background: linear-gradient(135deg, #00c3ff, #0073e6);
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      margin: 10px;
+      font-size: 18px;
+      border-radius: 10px;
+      cursor: pointer;
+      text-decoration: none;
+      font-weight: bold;
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
+      display: inline-block;
+    }
 
-        @keyframes glow {
-            from { text-shadow: 0 0 10px #00c3ff; }
-            to { text-shadow: 0 0 20px #0073e6; }
-        }
+    .button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 5px 15px rgba(0, 195, 255, 0.8);
+    }
 
-        footer {
-            background-color: #141c2b;
-            padding: 20px;
-            text-align: center;
-            font-size: 14px;
-            color: #b0c5d1;
-        }
+    .button:active {
+      transform: scale(0.95);
+      box-shadow: 0 2px 8px rgba(0, 195, 255, 0.6);
+    }
 
-        .message {
-            white-space: pre-wrap;
-            text-align: left;
-        }
-    </style>
+    footer {
+      background-color: #141c2b;
+      padding: 20px;
+      text-align: center;
+      font-size: 14px;
+      color: #b0c5d1;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #00c3ff; }
+      to { text-shadow: 0 0 20px #0073e6; }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>🌙 Moon Executor and MoonAPI</h1>
-        <h2>Free, Keyless, and Easy to Use</h2>
-    </header>
+  <!-- Moon orbit background video -->
+  <video autoplay muted loop class="bg-video">
+    <source src="https://cdn.pixabay.com/vimeo/403072215/moon-30976.mp4?width=640&hash=0f14dd3e4968e8307e32d73f35d152d71f1deec6" type="video/mp4" />
+  </video>
 
-    <div class="container">
-        <div class="section message">
-            <p>Hey everyone,</p>
+  <!-- Star canvas -->
+  <canvas id="stars"></canvas>
 
-            <p>After a lot of thinking, I’ve decided to officially discontinue Moon Softworks including Moon Executor, MoonAPI, and Moon hub. I am officially going to step away from the Roblox exploiting community.</p>
+  <header>
+    <h1>🌙 Moon Executor and MoonAPI</h1>
+    <h2>Free, Keyless, and Easy to Use</h2>
+  </header>
 
-            <p>I truly appreciate all the support y’all have given me.</p>
-
-            <p>But it’s time for me to move on to a new chapter in my life. I have been wanting a fresh start, I know this is the right call for me and my future gaming experience. Moon Discord server will no longer be maintained, and I won’t be active in the exploiting scene anymore.</p>
-
-            <p>Thank you all for being part of this chapter.<br>
-            To those still scripting, learning, and doing their thing, good luck and make sure not to skid.</p>
-
-            <p>Moon hub will stay active but no longer maintained or updated.</p>
-
-            <p>Much love,<br>
-            RamingCactus</p>
-        </div>
-
-        <div class="section">
-            <a href="https://discord.gg/9gFABDVsP3" target="_blank" class="button">Join Our Discord</a>
-        </div>
+  <div class="container">
+    <div class="section">
+      <a href="https://discord.gg/9gFABDVsP3" target="_blank" class="button">Join Our Discord</a>
+      <a href="https://www.roblox.com" target="_blank" class="button">Get Script</a>
     </div>
+  </div>
 
-    <footer>
-        <p>&copy; 2025 Moon Executor | All Rights Reserved</p>
-    </footer>
+  <footer>
+    <p>&copy; 2025 Moon Executor | All Rights Reserved</p>
+  </footer>
+
+  <script>
+    // Star animation
+    const canvas = document.getElementById("stars");
+    const ctx = canvas.getContext("2d");
+    let stars = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    function createStars() {
+      stars = [];
+      for (let i = 0; i < 150; i++) {
+        stars.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          r: Math.random() * 1.5,
+          d: Math.random() * 1
+        });
+      }
+    }
+
+    function drawStars() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "#fff";
+      ctx.shadowBlur = 5;
+      ctx.shadowColor = "#00c3ff";
+      stars.forEach(star => {
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
+        ctx.fill();
+      });
+      moveStars();
+    }
+
+    function moveStars() {
+      stars.forEach(star => {
+        star.y += star.d;
+        if (star.y > canvas.height) {
+          star.y = 0;
+          star.x = Math.random() * canvas.width;
+        }
+      });
+    }
+
+    function animateStars() {
+      drawStars();
+      requestAnimationFrame(animateStars);
+    }
+
+    resizeCanvas();
+    createStars();
+    animateStars();
+    window.addEventListener("resize", () => {
+      resizeCanvas();
+      createStars();
+    });
+
+    // Scroll reveal
+    const sections = document.querySelectorAll(".section");
+    const revealOnScroll = () => {
+      const triggerBottom = window.innerHeight * 0.85;
+      sections.forEach(section => {
+        const top = section.getBoundingClientRect().top;
+        if (top < triggerBottom) section.classList.add("visible");
+      });
+    };
+
+    window.addEventListener("scroll", revealOnScroll);
+    revealOnScroll();
+  </script>
 </body>
 </html>
